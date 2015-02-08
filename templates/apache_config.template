@@ -1,0 +1,51 @@
+<VirtualHost *:80>
+        ServerAdmin {{ ADMIN_EMAIL | default(webmaster@localhost)}}
+        ServerName {{ DATAWRAPPER_ROOT_DOMAIN | default(datawrapper.local)}}
+
+        DocumentRoot {{ DATAWRAPPER_WWW_DIRECTORY }}
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+        <Directory {{ DATAWRAPPER_WWW_DIRECTORY }}>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+
+<VirtualHost *:80>
+        ServerAdmin {{ ADMIN_EMAIL | default(webmaster@localhost)}}
+        ServerName {{ DATAWRAPPER_CHART_DOMAIN | default(chart.datawrapper.local)}}
+
+        DocumentRoot {{ DATAWRAPPER_WWW_CHART_DIRECTORY }}
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+        <Directory {{ DATAWRAPPER_WWW_CHART_DIRECTORY }}>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
