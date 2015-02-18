@@ -1,8 +1,8 @@
 # Datawrapper configuration
 #
 
-domain: {{ DATAWRAPPER_ROOT_DOMAIN | default(datawrapper.local) }}
-chart_domain: {{ DATAWRAPPER_CHART_DOMAIN | default(chart.datawrapper.local) }}
+domain: {{ DATAWRAPPER_ROOT_DOMAIN | default("datawrapper.local") }}
+chart_domain: {{ DATAWRAPPER_CHART_DOMAIN | default("chart.datawrapper.local") }}
 # asset_domain: ...
 
 ## the following keys are used to hash passwords.
@@ -19,7 +19,7 @@ chart_domain: {{ DATAWRAPPER_CHART_DOMAIN | default(chart.datawrapper.local) }}
 
 
 ## show debug message?
-debug: {{ DATAWRAPPER_DEBUG | default(false) }}
+debug: {{ DATAWRAPPER_DEBUG | default("false") }}
 
 ## some default values
 defaults:
@@ -35,9 +35,9 @@ thumbnails:
 ## email addresses
 email:
   # users with problems will be shown the support email
-  support: {{ ADMIN_EMAIL | default(webmaster@localhost)}}
+  support: {{ ADMIN_EMAIL | default("webmaster@localhost")}}
   # error messages will go here
-  log: {{ ADMIN_EMAIL | default(webmaster@localhost)}}
+  log: {{ ADMIN_EMAIL | default("webmaster@localhost")}}
   # sender
   sender: noreply@datawrapper.de
 

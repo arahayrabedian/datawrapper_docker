@@ -1,6 +1,6 @@
 <VirtualHost *:80>
-        ServerAdmin {{ ADMIN_EMAIL | default(webmaster@localhost)}}
-        ServerName {{ DATAWRAPPER_ROOT_DOMAIN | default(datawrapper.local)}}
+        ServerAdmin {{ ADMIN_EMAIL | default("webmaster@localhost")}}
+        ServerName {{ DATAWRAPPER_ROOT_DOMAIN | default("datawrapper.local")}}
 
         DocumentRoot {{ DATAWRAPPER_WWW_DIRECTORY }}
         <Directory />
@@ -25,8 +25,8 @@
 </VirtualHost>
 
 <VirtualHost *:80>
-        ServerAdmin {{ ADMIN_EMAIL | default(webmaster@localhost)}}
-        ServerName {{ DATAWRAPPER_CHART_DOMAIN | default(chart.datawrapper.local)}}
+        ServerAdmin {{ ADMIN_EMAIL | default("webmaster@localhost")}}
+        ServerName {{ DATAWRAPPER_CHART_DOMAIN | default("chart.datawrapper.local")}}
 
         DocumentRoot {{ DATAWRAPPER_WWW_CHART_DIRECTORY }}
         <Directory />
