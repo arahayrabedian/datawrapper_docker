@@ -9,9 +9,9 @@ $conf = array (
       'adapter' => 'mysql',
       'connection' =>
       array (
-        'dsn' => 'mysql:host={{ DATAWRAPPER_DB_HOST | default(localhost) }};dbname={{ DATAWRAPPER_DB_NAME | default(datawrapper) }}',
-        'user' => '{{ DATAWRAPPER_DB_USERNAME | default(root)}}',
-        'password' => '{{ DATAWRAPPER_DB_PASSWORD }}',
+        'dsn' => 'mysql:host={{ DATAWRAPPER_DB_HOST | default("localhost") }};dbname={{ DATAWRAPPER_DB_NAME | default("datawrapper") }}',
+        'user' => '{{ DATAWRAPPER_DB_USERNAME | default("root")}}',
+        'password' => '{{ DATAWRAPPER_DB_PASSWORD | default("") }}',
       ),
     ),
     'default' => 'datawrapper',
