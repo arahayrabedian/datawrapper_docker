@@ -1,0 +1,20 @@
+#/bin/bash
+
+# initialize database and schema
+mysql -h {{ DATAWRAPPER_DB_HOST | default("127.0.0.1") }} -u root --password={{ DATAWRAPPER_DB_ROOT_PASSWORD | default(MYSQL_PASSWORD)}} -e "CREATE DATABASE {{ DATAWRAPPER_DB_NAME | default("datawrapper") }};"
+cat $DATAWRAPPER_ROOT_DIRECTORY/lib/core/build/sql/schema.sql | mysql {{ DATAWRAPPER_DB_NAME | default("datawrapper") }} -h {{ DATAWRAPPER_DB_HOST | default("127.0.0.1") }} -u {{ DATAWRAPPER_DB_USERNAME | default("root")}} --password={{ DATAWRAPPER_DB_ROOT_PASSWORD | default(MYSQL_PASSWORD)}}
+
+# generate datawrapper configuration at startup time as we will have credentials then.
+envtpl < /tmp/templates/datawrapper-conf.php.master.template > $DATAWRAPPER_ROOT_DIRECTORY/lib/core/build/conf/datawrapper-conf.php
+
+# replace apache default config with our own, not in the mood to deal with 000-blabla resolution orders. delete it.
+rm /etc/apache2/sites-enabled/000-default
+envtpl < /tmp/templates/apache_config.template > /etc/apache2/sites-enabled/000-default
+
+# do yaml configuration generation.
+envtpl < /tmp/templates/config.yaml.template > $DATAWRAPPER_ROOT_DIRECTORY/config.yaml
+
+# install plugins and stuff. dunno why this needs db.
+php $DATAWRAPPER_ROOT_DIRECTORY/scripts/plugin.php install "*"
+
+cd $DATAWRAPPER_ROOT_DIRECTORY && make

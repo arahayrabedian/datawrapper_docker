@@ -15,7 +15,7 @@ chart_domain: {{ DATAWRAPPER_CHART_DOMAIN | default("chart.datawrapper.local") }
 ## If you change them later no user will be able to login
 ## with their former passwords.
 # auth_salt: "MY_AUTH_SALT"
-# secure_auth_key: "MY_SECRET_AUTH_KEY"
+secure_auth_key: {{ DATAWRAPPER_SECURE_AUTH_KEY }}
 
 
 ## show debug message?
