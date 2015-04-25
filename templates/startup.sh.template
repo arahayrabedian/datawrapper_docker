@@ -1,5 +1,9 @@
 #/bin/bash
 
+# add datawrapper charts host to hosts file
+echo "127.0.0.1 {{ DATAWRAPPER_CHART_DOMAIN | default("chart.datawrapper.local")}}" >> /etc/hosts
+echo "127.0.0.1 {{ DATAWRAPPER_ROOT_DOMAIN | default("datawrapper.local")}}" >> /etc/hosts
+
 # initialize database and schema
 mysql -h {{ DATAWRAPPER_DB_HOST | default("127.0.0.1") }} -u root --password={{ DATAWRAPPER_DB_ROOT_PASSWORD | default(MYSQL_PASSWORD)}} -e "CREATE DATABASE {{ DATAWRAPPER_DB_NAME | default("datawrapper") }};"
 cat $DATAWRAPPER_ROOT_DIRECTORY/lib/core/build/sql/schema.sql | mysql {{ DATAWRAPPER_DB_NAME | default("datawrapper") }} -h {{ DATAWRAPPER_DB_HOST | default("127.0.0.1") }} -u {{ DATAWRAPPER_DB_USERNAME | default("root")}} --password={{ DATAWRAPPER_DB_ROOT_PASSWORD | default(MYSQL_PASSWORD)}}
@@ -16,5 +20,3 @@ envtpl < /tmp/templates/config.yaml.template > $DATAWRAPPER_ROOT_DIRECTORY/confi
 
 # install plugins and stuff. dunno why this needs db.
 php $DATAWRAPPER_ROOT_DIRECTORY/scripts/plugin.php install "*"
-
-cd $DATAWRAPPER_ROOT_DIRECTORY && make
