@@ -5,6 +5,8 @@ Dockerfile and related build scripts for a docker image for datawrapper.
 - export env var DATAWRAPPER_SECURE_AUTH_KEY and expose appropriate ports (-p 0.0.0.0:80:80 if you like).
 - if you'd like some fancier config options, some are available, but look through the various .tpl files to figure them out, will be documented when this is more mature.
 
+# Caveats
+ - Uses @rubensfernando's plugin-embed to allow embedding charts - not native as native is broken.
 
 # Limitations
  - currently has an ephemeral on-board sql, this is fine to develop against and such, but is NOT production ready.
