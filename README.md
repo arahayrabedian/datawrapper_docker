@@ -1,9 +1,20 @@
 # Datawrapper Docker
 Dockerfile and related build scripts for a docker image for datawrapper.
 
-# To Run (After building)
+# To Pull
+```bash
+docker pull arahayrabedian/datawrapper:latest
+```
+
+# To Build
+```bash
+docker build .
+```
+
+# To Run
 - export env var DATAWRAPPER_SECURE_AUTH_KEY and expose appropriate ports (-p 0.0.0.0:80:80 if you like).
 - if you'd like some fancier config options, some are available, but look through the various .tpl files to figure them out, will be documented when this is more mature.
+for example ```docker run -e DATAWRAPPER_SECURE_AUTH_KEY=slartibartfast -p 0.0.0.0:80:80 arahayrabedian/datawrapper:latest```
 
 # Caveats
  - Uses @rubensfernando's plugin-embed to allow embedding charts - not native as native is broken.
