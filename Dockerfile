@@ -1,6 +1,6 @@
 FROM jbfink/lampstack:latest
 
-MAINTAINER Ara Hayrabedian <ara.hayrabedian@gmail.com>
+MAINTAINER Ara Hayrabedian <>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
