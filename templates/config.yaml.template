@@ -3,7 +3,7 @@
 
 domain: {{ DATAWRAPPER_ROOT_DOMAIN | default("datawrapper.local") }}
 chart_domain: {{ DATAWRAPPER_CHART_DOMAIN | default("chart.datawrapper.local") }}
-# asset_domain: ...
+asset_domain: {{ DATAWRAPPER_ASSET_DOMAIN | default("") }}
 
 ## the following keys are used to hash passwords.
 ##
