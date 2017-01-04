@@ -1,6 +1,10 @@
 # Datawrapper Docker
 Dockerfile and related build scripts for a docker image for datawrapper.
 
+# THIS IS NO LONGER MAINTAINED HERE
+for a fork that keeps on giving, see @runa's [fork here](https://github.com/runa/datawrapper_docker)
+
+
 # To Pull
 ```bash
 docker pull arahayrabedian/datawrapper:latest
